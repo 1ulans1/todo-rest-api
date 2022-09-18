@@ -10,11 +10,14 @@ import java.util.Objects;
 public class TodoDTO {
     @NotNull
     private String title;
-    @NotNull
     private String describe;
+    @NotNull
     private LocalDate data;
     @NotNull
     private TodoStatus status;
+
+    public TodoDTO() {
+    }
 
     public TodoDTO(String title, LocalDate data, String describe, TodoStatus status) {
         this.title = title;

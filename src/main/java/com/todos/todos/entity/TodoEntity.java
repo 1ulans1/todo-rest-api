@@ -17,6 +17,9 @@ public class TodoEntity {
     private Long id;
     @NotNull
     private String title;
+
+    @Column(name = "_describe")
+
     private String describe;
     @NotNull
     private LocalDate data;
