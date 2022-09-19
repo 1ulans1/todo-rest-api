@@ -1,11 +1,12 @@
 package com.todos.todos.service;
 
 import com.todos.todos.dto.TodoDTO;
-import com.todos.todos.entity.TodoEntity;
-import com.todos.todos.entity.TodoStatus;
+import com.todos.todos.models.entity.TodoEntity;
+import com.todos.todos.models.entity.TodoStatus;
 import com.todos.todos.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
@@ -29,15 +30,15 @@ public class TodoService {
         return repository.findAll();
     }
 
-    public void addTodo(TodoDTO todoDTO) {
-        repository.save(TodoDTO.toEntity(todoDTO));
+    public TodoEntity addTodo(TodoDTO todoDTO) {
+        return repository.save(TodoDTO.toEntity(todoDTO));
     }
 
     public Optional<TodoEntity> deleteTodo(Long id) {
         return Optional.empty();
     }
 
-    public TodoDTO update(Long id, TodoDTO todo) {
+    public TodoEntity update(Long id, TodoDTO todo) {
         final TodoEntity todoToUpdate = repository.getReferenceById(id);
 
         if (todo.getStatus() != null) {
@@ -45,6 +46,8 @@ public class TodoService {
         }
 
         if (todo.getStatus() != null) {
+//            TodoStatus newStatus = todo.getStatus();
+//            TodoStatus oldStatus = todoToUpdate.getStatus();
             todoToUpdate.setStatus(todo.getStatus());
         }
 
@@ -56,7 +59,7 @@ public class TodoService {
             todoToUpdate.setData(todo.getData());
         }
 
-        return TodoEntity.toDTO(repository.save(todoToUpdate));
+        return repository.save(todoToUpdate);
     }
 
     public void update(Long id, TodoStatus status) {

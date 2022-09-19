@@ -1,4 +1,4 @@
-package com.todos.todos.entity;
+package com.todos.todos.models.entity;
 
 public enum TodoStatus {
     Planned, WorkInProgress, Done, Cancelled

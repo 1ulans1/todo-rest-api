@@ -1,7 +1,7 @@
 package com.todos.todos.dto;
 
-import com.todos.todos.entity.TodoEntity;
-import com.todos.todos.entity.TodoStatus;
+import com.todos.todos.models.entity.TodoEntity;
+import com.todos.todos.models.entity.TodoStatus;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -10,11 +10,14 @@ import java.util.Objects;
 public class TodoDTO {
     @NotNull
     private String title;
-    @NotNull
     private String describe;
+    @NotNull
     private LocalDate data;
     @NotNull
     private TodoStatus status;
+
+    public TodoDTO() {
+    }
 
     public TodoDTO(String title, LocalDate data, String describe, TodoStatus status) {
         this.title = title;
