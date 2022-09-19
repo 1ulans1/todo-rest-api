@@ -1,4 +1,4 @@
-package com.todos.todos.entity;
+package com.todos.todos.models.entity;
 
 import com.todos.todos.dto.TodoDTO;
 
@@ -19,7 +19,6 @@ public class TodoEntity {
     private String title;
 
     @Column(name = "_describe")
-
     private String describe;
     @NotNull
     private LocalDate data;

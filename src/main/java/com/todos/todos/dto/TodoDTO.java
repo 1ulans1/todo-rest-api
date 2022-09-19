@@ -1,7 +1,7 @@
 package com.todos.todos.dto;
 
-import com.todos.todos.entity.TodoEntity;
-import com.todos.todos.entity.TodoStatus;
+import com.todos.todos.models.entity.TodoEntity;
+import com.todos.todos.models.entity.TodoStatus;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;

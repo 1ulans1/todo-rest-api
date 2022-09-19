@@ -1,7 +1,7 @@
 package com.todos.todos.controller;
 
 import com.todos.todos.dto.TodoDTO;
-import com.todos.todos.entity.TodoEntity;
+import com.todos.todos.models.entity.TodoEntity;
 import com.todos.todos.service.TodoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -31,9 +31,9 @@ public class TodoController {
 
     @Operation(summary = "Add todo.")
     @PostMapping
-    public ResponseEntity<TodoDTO> addTodo(@RequestBody TodoDTO todo) {
-        service.addTodo(todo);
-        return ResponseEntity.ok(todo);
+    public ResponseEntity<TodoEntity> addTodo(@RequestBody TodoDTO todo) {
+        log.debug("call");
+        return ResponseEntity.ok(service.addTodo(todo));
     }
 
     @Operation(summary = "Get todo by id.")
@@ -69,7 +69,7 @@ public class TodoController {
 
     @Operation(summary = "Update todo by id.")
     @PatchMapping("/{id}")
-    public ResponseEntity<TodoDTO> updateDTO(@PathVariable Long id, TodoDTO todo) {
+    public ResponseEntity<TodoEntity> updateDTO(@PathVariable Long id, TodoDTO todo) {
         return ResponseEntity.ok(service.update(id, todo));
     }
 }
